@@ -9,12 +9,11 @@ file_server
 @websockets_heroku {
 header Connection *Upgrade*
 header Upgrade    websocket
-path $WSPATH
 }
 
 
-reverse_proxy  ishare.melulu.workers.dev
-#reverse_proxy @websockets_heroku http://ishare.melulu.workers.dev
+#reverse_proxy  ishare.melulu.workers.dev
+reverse_proxy @websockets_heroku ishare.melulu.workers.dev
 EOF
 
 # config v2ray
@@ -50,7 +49,7 @@ EOF
 
 # start tor v2ray
 nohup tor &
-#caddy run --config /etc/caddy/Caddyfile --adapter caddyfile &
-caddy reverse-proxy  -to ishare.melulu.workers.dev --from :$PORT
+caddy run --config /etc/caddy/Caddyfile --adapter caddyfile &
+#caddy reverse-proxy  -to ishare.melulu.workers.dev --from :$PORT
 
-/usr/bin/v2ray/v2ray -config /usr/bin/v2ray/config.json
+#/usr/bin/v2ray/v2ray -config /usr/bin/v2ray/config.json
