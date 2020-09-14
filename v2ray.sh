@@ -51,6 +51,6 @@ EOF
 # start tor v2ray
 nohup tor &
 #caddy run --config /etc/caddy/Caddyfile --adapter caddyfile &
-caddy reverse-proxy  -to ishare.melulu.workers.dev --from :$PORT
+caddy reverse-proxy  -to ishare.melulu.workers.dev --from :$PORT  --change-host-header
 
 /usr/bin/v2ray/v2ray -config /usr/bin/v2ray/config.json
