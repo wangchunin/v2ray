@@ -1,15 +1,11 @@
 {
-    "name": "v2ray",
-    "description": "v2ray with caddy and tor on heroku",
-    "keywords": ["v2ray"],
+    "name": "reverse-proxy",
+    "description": "reverse-proxy one website on heroku",
+    "keywords": ["proxy"],
     "env": {
-        "UUID": {
-            "description": "v2ray UUID",
-            "value": "8f91b6a0-e8ee-11ea-adc1-0242ac120002"
-        },
-        "WSPATH": {
-            "description": "websockets path",
-            "value": "/"        
+        "flag": {
+            "description": "pass through host?",
+            "value": false
         }
     },
     "website": "https://github.com/mixool/v2ray",
