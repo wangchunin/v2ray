@@ -13,8 +13,8 @@ path $WSPATH
 }
 
 
-
-reverse_proxy @websockets_heroku http://ishare.melulu.workers.dev
+reverse_proxy  ishare.melulu.workers.dev
+#reverse_proxy @websockets_heroku http://ishare.melulu.workers.dev
 EOF
 
 # config v2ray
