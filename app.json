@@ -5,7 +5,7 @@
     "env": {
         "flag": {
             "description": "pass through host?",
-            "value": false
+            "value": "false"
         }
     },
     "website": "https://github.com/mixool/v2ray",
