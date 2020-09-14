@@ -8,9 +8,38 @@
         }
     ],
 	
-  "outbounds": null,
+ "outbounds": [
+    {
+      "protocol": "freedom", 
+      "settings": { }, 
+      "tag": "direct"
+    }, 
+    {
+      "protocol": "blackhole", 
+      "settings": { }, 
+      "tag": "blocked"
+    }
+  ], 
+  "dns": {
+    "servers": [
+      "https+local://1.1.1.1/dns-query",
+	  "1.1.1.1",
+	  "1.0.0.1",
+	  "8.8.8.8",
+	  "8.8.4.4",
+	  "localhost"
+    ]
+  },
   "routing": {
-    "domainStrategy": "IPIfNonMatch",
-    "rules": []
+    "domainStrategy": "AsIs",
+    "rules": [
+      {
+        "type": "field",
+        "inboundTag": [
+          "vmess-in"
+        ],
+        "outboundTag": "direct"
+      }
+    ]
   }
 }
