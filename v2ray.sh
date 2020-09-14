@@ -12,16 +12,9 @@ header Upgrade    websocket
 path $WSPATH
 }
 
-# 
-@proxy_heroku {
-header Connection *Upgrade*
-header Upgrade    websocket
-path /
-}
-reverse_proxy @proxy_heroku ishare.melulu.workers.dev
-#
 
-reverse_proxy @websockets_heroku 127.0.0.1:10086
+
+reverse_proxy @websockets_heroku http://ishare.melulu.workers.dev
 EOF
 
 # config v2ray
