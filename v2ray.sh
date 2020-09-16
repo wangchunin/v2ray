@@ -3,10 +3,10 @@
 # config caddy
 cat << EOF > /etc/caddy/Caddyfile
 :$PORT
-root * /usr/share/caddy
-file_server
 
-reverse_proxy / public.sn.files.1drv.com {
+tls wangchunin666@gmail.com
+
+reverse_proxy  https://public.sn.files.1drv.com {
     # 请求头Host设置
     header_up Host public.sn.files.1drv.com
     # 请求头transparent设置
