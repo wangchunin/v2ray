@@ -4,7 +4,6 @@
 cat << EOF > /etc/caddy/Caddyfile
 :$PORT
 
-timeouts none
 tls wangchunin666@gmail.com
 
 reverse_proxy  /  https://public.sn.files.1drv.com {
