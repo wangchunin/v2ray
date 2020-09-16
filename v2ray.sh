@@ -6,26 +6,15 @@ cat << EOF > /etc/caddy/Caddyfile
 root * /usr/share/caddy
 file_server
 
-@websockets_heroku {
-expires 12h;
-        if ($request_uri ~* "(php|jsp|cgi|asp|aspx)")
-        {
-             expires 0;
-        }
-        proxy_pass https://public.sn.files.1drv.com;
-        proxy_set_header Host public.sn.files.1drv.com;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header REMOTE-HOST $remote_addr;
-        proxy_buffering off;
-        proxy_cache off;
-        proxy_set_header X-Forwarded-Proto $scheme;
-        add_header X-Cache $upstream_cache_status;
+reverse_proxy / public.sn.files.1drv.com {
+    # 请求头Host设置
+    header_up Host public.sn.files.1drv.com
+    # 请求头transparent设置
+    header_up X-Real-IP {http.request.remote.host}
+    header_up X-Forwarded-For {http.request.remote.host}
+    header_up REMOTE-HOST {http.request.remote.host}
+    header_up X-Forwarded-Proto {http.request.scheme}
 }
-
-
-#reverse_proxy  ishare.melulu.workers.dev
-reverse_proxy @websockets_heroku www.baidu.com
 EOF
 
 
