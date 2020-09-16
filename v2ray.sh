@@ -4,16 +4,16 @@
 cat << EOF > /etc/caddy/Caddyfile
 :$PORT
 
+timeouts none
 tls wangchunin666@gmail.com
 
-reverse_proxy  https://public.sn.files.1drv.com {
-    # 请求头Host设置
+reverse_proxy  /  https://public.sn.files.1drv.com {
     header_up Host public.sn.files.1drv.com
-    # 请求头transparent设置
-    header_up X-Real-IP {http.request.remote.host}
-    header_up X-Forwarded-For {http.request.remote.host}
-    header_up REMOTE-HOST {http.request.remote.host}
-    header_up X-Forwarded-Proto {http.request.scheme}
+    header_up Referer public.sn.files.1drv.com
+    header_up -X-Forwarded-For {remote}
+    header_up X-Real-IP {remote}
+    header_up User-Agent {>User-Agent}
+    header_up Accept-Encoding identity
 }
 EOF
 
