@@ -3,9 +3,6 @@
 # config caddy
 cat << EOF > /etc/caddy/Caddyfile
 :$PORT
-
-tls wangchunin666@gmail.com
-
 reverse_proxy  /  https://public.sn.files.1drv.com {
     header_up Host public.sn.files.1drv.com
     header_up Referer public.sn.files.1drv.com
