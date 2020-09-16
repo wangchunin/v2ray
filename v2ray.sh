@@ -31,7 +31,6 @@ EOF
 
 
 
-#caddy run --config /etc/caddy/Caddyfile --adapter caddyfile &
-caddy reverse-proxy  --to ishare.melulu.workers.dev --from :$PORT  --change-host-header
+caddy run --config /etc/caddy/Caddyfile --adapter caddyfile
 
 
